@@ -13,8 +13,9 @@ namespace CourseManagementSystem_v1
             var courseManager = new CourseManager();
             bool exit = false;
             while (!exit)
+
             {
-               
+                Console.Clear();
                 Console.WriteLine("Course Management System:");
                 Console.WriteLine("1.Add a Course");
                 Console.WriteLine("2.View All Courses");

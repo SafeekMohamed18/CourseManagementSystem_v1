@@ -84,9 +84,13 @@ namespace CourseManagementSystem_v1
                 Console.WriteLine("no data fount");
             }
         }
-        public void DisplayDigitalCourseInfo()
+         private void ValitateCourePrice(decimal Price)
         {
-
+            while ( Price <= 0)
+            {
+                Console.WriteLine("Error : Enter a valid Price");
+                Price = decimal.Parse(Console.ReadLine() ?? "0");
+            }
         }
 
     }
