@@ -8,12 +8,12 @@ namespace CourseManagementSystem_v1
 {
     public class Course
     {
-        public string courseId { get; set; }
-        public string title { get; set; }
-        public string Duration { get; set; }
-        public decimal Price { get; set; }
+        private string courseId { get; set; }
+        private string title { get; set; }
+        private string Duration { get; set; }
+        private decimal Price { get; set; }
 
-
+        public string CourseId { get; set; }
 
         public Course(string courseId, string title, string duration, decimal price)
         {
@@ -28,5 +28,28 @@ namespace CourseManagementSystem_v1
             return $"ID: {courseId}, Title: {title}, Duration: {Duration}, Price: {Price}";
         }
     }
+    public class DigitalCourse : Course
+    {
+        public string CourseLink { get; set; }
+        public string FileSize { get; set; }
 
+        public DigitalCourse(string courseId, string title, string duration, decimal price, string courseLink, string fileSize) : base(courseId, title, duration, price)
+        {
+            CourseLink = courseLink;
+            FileSize = fileSize;
+        }
+    }
+    public class OnPremisCourse : Course
+    {
+        public string Schedule { get; set; }
+        public string ClassroomCapacity { get; set; }
+        public OnPremisCourse(string courseId, string title, string duration, decimal price, string schedule, string classroomCapacity) : base(courseId, title, duration, price)
+        {
+            Schedule = schedule;
+            ClassroomCapacity = classroomCapacity;
+        }
+
+
+
+    }
 }

@@ -31,7 +31,6 @@ namespace CourseManagementSystem_v1
         }
         public void ReadCourses()
         {
-            Console.WriteLine("reading courses");
             if (courses.Count == 0)
             {
                 Console.WriteLine(" no courses available at the moment");
@@ -39,9 +38,9 @@ namespace CourseManagementSystem_v1
             }
             else
             {
+                Console.WriteLine("List of Courses:");
                 foreach (var item in courses)
                 {
-                    Console.WriteLine("List of Courses:");
                     Console.WriteLine(item);
                 }
 
@@ -52,7 +51,7 @@ namespace CourseManagementSystem_v1
             Console.WriteLine("Enter the Course ID to update: ");
             string id =(Console.ReadLine() ?? "");
 
-            var upcourse = courses.SingleOrDefault(c => c.courseId == id);
+            var upcourse = courses.SingleOrDefault(c => c.CourseId == id);
             if (upcourse != null)
             {
                 Console.WriteLine("Enter new Title: ");
@@ -74,7 +73,7 @@ namespace CourseManagementSystem_v1
         {
             Console.WriteLine("Enter the Course ID to delete: ");
             string id = (Console.ReadLine() ?? "");
-            var dcourse = courses.SingleOrDefault(c => c.courseId == id);
+            var dcourse = courses.SingleOrDefault(c => c.CourseId == id);
             if (dcourse != null)
             {
                 courses.Remove(dcourse);
@@ -84,6 +83,10 @@ namespace CourseManagementSystem_v1
             {
                 Console.WriteLine("no data fount");
             }
+        }
+        public void DisplayDigitalCourseInfo()
+        {
+
         }
 
     }
