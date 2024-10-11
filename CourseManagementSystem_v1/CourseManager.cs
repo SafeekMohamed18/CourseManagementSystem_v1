@@ -6,20 +6,84 @@ using System.Threading.Tasks;
 
 namespace CourseManagementSystem_v1
 {
-    internal class CourseManager
+    public class CourseManager
     {
-        private List<Course> courses = new List<Course>();
+        public List<Course> courses = new List<Course>();
 
         //add course
         public void CreateCourse()
         {
-            Console.WriteLine("Enter course Id for add a course: ");
-            string id =(Console.ReadLine()??"1");
-            Console.WriteLine("enter course title for the course: ");
-            string title =(Console.ReadLine()??"");
-            Console.WriteLine("enter a duration for a course: ");
+            Console.WriteLine("Enter Course ID : ");
+            string courseId = (Console.ReadLine() ?? "1");
+            Console.WriteLine("Enter Course Title: ");
+            string title = (Console.ReadLine() ?? "");
+            Console.WriteLine("Enter Course Duration: ");
             string duration = (Console.ReadLine() ?? "");
-            Console.WriteLine();
+            Console.WriteLine("Enter Course price: ");
+            decimal price = decimal.Parse(Console.ReadLine() ?? "1");
+
+            var course = new Course(courseId, title, duration, price);
+
+
+            courses.Add(course);
+            Console.WriteLine("Course added successfully.");
+
+        }
+        public void ReadCourses()
+        {
+            Console.WriteLine("reading courses");
+            if (courses.Count == 0)
+            {
+                Console.WriteLine(" no courses available at the moment");
+                return;
+            }
+            else
+            {
+                foreach (var item in courses)
+                {
+                    Console.WriteLine("List of Courses:");
+                    Console.WriteLine(item);
+                }
+
+            }
+        }
+        public void UpdateCourse()
+        {
+            Console.WriteLine("Enter the Course ID to update: ");
+            string id =(Console.ReadLine() ?? "");
+
+            var upcourse = courses.SingleOrDefault(c => c.courseId == id);
+            if (upcourse != null)
+            {
+                Console.WriteLine("Enter new Title: ");
+                string uTitle = (Console.ReadLine() ?? "");
+                Console.WriteLine("Enter new Duration: ");
+                string uDuration = (Console.ReadLine() ?? "");
+                Console.WriteLine("Enter new Price: ");
+                decimal uPrice = decimal.Parse(Console.ReadLine() ?? "1");
+                Console.WriteLine("Course updated successfully.");
+
+                courses.Add( upcourse);
+            }
+            else
+            {
+                Console.WriteLine("no course fount");
+            }
+        }
+        public void DeleteCourse()
+        {
+            Console.WriteLine("Enter the Course ID to delete: ");
+            string id = (Console.ReadLine() ?? "");
+            var dcourse = courses.SingleOrDefault(c => c.courseId == id);
+            if (dcourse != null)
+            {
+                courses.Remove(dcourse);
+                Console.WriteLine("Course deleted successfully.");
+            }
+            else
+            {
+                Console.WriteLine("no data fount");
+            }
         }
 
     }
